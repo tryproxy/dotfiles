@@ -18,7 +18,9 @@
   {
     "context": "VimControl && !menu",
     "bindings": {
-      "g '": ["vim::PushJump", { "line": false }],
+      // "g '": ["vim::PushJump", { "line": false }],
+      // "`": ["vim::PushJump", { "line": true }]
+      "'": ["vim::PushJump", { "line": false }],
       "`": ["vim::PushJump", { "line": true }]
     }
   },
