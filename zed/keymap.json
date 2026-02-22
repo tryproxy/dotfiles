@@ -1,15 +1,4 @@
-// Zed keymap
-//
-// cheat sheet
-// https://gist.github.com/therealparmesh/f6d404a25591325cc9d8598f815cd265
-//
-// https://gist.github.com/therealparmesh/f6d404a25591325cc9d8598f815cd265
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
-//
+// Context helpers:
 // "Editor && vim_mode == normal && !VimWaiting && !menu" for normal mode keybindings.
 // "Editor && vim_mode == insert && !menu" for insert mode.
 // "Editor && vim_mode == visual && !VimWaiting && !menu" for visual mode.
@@ -69,36 +58,28 @@
   //     "shift-j": "editor::MoveLineDown",
   //   }
   // },
-  //
-  //
   {
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work in normal & visual mode
+      // Put key-bindings here if you want them to work in normal & visual mode.
       // Git
       "space g h d": "editor::ToggleSelectedDiffHunks",
       "space g h a": "editor::ExpandAllDiffHunks",
       "space g h c": "editor::CollapseAllDiffHunks",
       "space g s": "git_panel::ToggleFocus",
-
       // Toggle inlay hints
       "space t i": "editor::ToggleInlayHints",
-
       // Toggle soft wrap
       "space u w": "editor::ToggleSoftWrap",
-
       // NOTE: Toggle Zen mode, not fully working yet
       // "space c z": "workspace::ToggleCenteredLayout",
-
       // Open markdown preview
       "space m p": "markdown::OpenPreview",
       "space m P": "markdown::OpenPreviewToTheSide",
-
       // Open recent project
       "space f p": "projects::OpenRecent",
       // Search word under cursor
       "space s w": "pane::DeploySearch",
-
       // Chat with Slop
       "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
@@ -108,14 +89,13 @@
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work only in normal mode
+      // Put key-bindings here if you want them to work only in normal mode.
       // Window movement bindings
-      // Ctrl jklk to move between panes
+      // Ctrl hjkl to move between panes
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-
       // +LSP
       "space c a": "editor::ToggleCodeActions",
       "space .": "editor::ToggleCodeActions",
@@ -137,14 +117,11 @@
       "s S": "project_symbols::Toggle",
       // Diagnostic
       "space x x": "diagnostics::Deploy",
-
       // +Git
       // Git prev/next hunk
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
-
       // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
-
       // + Buffers
       // Switch between buffers
       "shift-h": "pane::ActivatePreviousItem",
@@ -168,7 +145,7 @@
       "space s": "pane::SplitDown",
     },
   },
-  // Empty pane, set of keybindings that are available when there is no active editor
+  // Empty pane, set of keybindings that are available when there is no active editor.
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
@@ -194,19 +171,12 @@
       // "j k": "vim::NormalBefore" // remap jk in insert mode to escape
     },
   },
-  // Rename
+  // Rename + Code Action
   {
     "context": "Editor && vim_operator == c",
     "bindings": {
       "c": "vim::CurrentLine",
       "r": "editor::Rename", // zed specific
-    },
-  },
-  // Code Action
-  {
-    "context": "Editor && vim_operator == c",
-    "bindings": {
-      "c": "vim::CurrentLine",
       "a": "editor::ToggleCodeActions", // zed specific
     },
   },
@@ -219,6 +189,8 @@
       "alt-j": "terminal_panel::ToggleFocus",
       // "ctrl-:": "workspace::NewTerminal"
       "alt-=": "workspace::NewTerminal",
+      // Map VSCode like keybindings
+      // "cmd-b": "workspace::ToggleRightDock"
     },
   },
   {
@@ -255,7 +227,7 @@
       "ctrl-j": "workspace::ActivatePaneDown",
     },
   },
-  // Panel nagivation
+  // Panel navigation
   {
     "context": "Dock",
     "bindings": {
@@ -263,13 +235,6 @@
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
-    },
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      // Map VSCode like keybindings
-      // "cmd-b": "workspace::ToggleRightDock"
     },
   },
   // Run nearest task
