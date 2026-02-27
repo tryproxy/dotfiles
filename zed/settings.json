@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "buffer_font_family": "FiraCode Nerd Font Mono",
+  "buffer_font_family": "Hack Nerd Font Mono",
   "git_panel": {
     "tree_view": true,
   },
@@ -124,7 +124,7 @@
   "theme": {
     "mode": "dark",
     "light": "Ayu Light",
-    "dark": "GitHub Dark Dimmed",
+    "dark": "Kanagawa Dragon - No Italics",
   },
   "vim": {
     "toggle_relative_line_numbers": true,
