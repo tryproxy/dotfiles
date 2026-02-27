@@ -132,6 +132,10 @@ esac
 
 # git prompt (branch in PS1), if available
 [ -f /etc/bash_completion.d/git-prompt ] && source /etc/bash_completion.d/git-prompt
+
+# show upstream/ahead-behind in __git_ps1
+export GIT_PS1_SHOWUPSTREAM="auto verbose"
+
 __repo_path() {
   local top rel repo
 
