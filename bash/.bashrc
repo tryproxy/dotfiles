@@ -156,8 +156,18 @@ __repo_path() {
   fi
 }
 
+__git_ps1_compact_upstream() {
+  local g
+  g="$(__git_ps1 "%s")" || return
+  # Compact upstream marker: |u+1 -> +1, |u-2 -> -2, |u= -> (hidden)
+  g="${g//|u=/}"
+  g="${g//|u+/+}"
+  g="${g//|u-/-}"
+  printf "%s" "$g"
+}
+
 # separator variant ⎇
-export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]$(__repo_path)\[\e[0m\]$(__git_ps1 "\[\e[1;35m\]::%s\[\e[0m\]")\$ '
+export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]$(__repo_path)\[\e[0m\]\[\e[1;35m\]::$(__git_ps1_compact_upstream)\[\e[0m\]\$ '
 # git end
 
 # Set up fzf key bindings and fuzzy completion
