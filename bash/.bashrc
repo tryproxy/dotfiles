@@ -156,6 +156,15 @@ __repo_path() {
   fi
 }
 
+__user_host_for_repo() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1 || \
+     git rev-parse --is-inside-git-dir >/dev/null 2>&1; then
+    printf "%s" "$USER"
+  else
+    printf "%s@%s" "$USER" "${HOSTNAME%%.*}"
+  fi
+}
+
 __git_ps1_compact_upstream() {
   local g prefix up ahead behind
   g="$(__git_ps1 "%s")" || return
@@ -192,7 +201,7 @@ __git_ps1_compact_upstream() {
 }
 
 # separator variant ⎇
-export PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]$(__repo_path)\[\e[0m\]\[\e[1;35m\]::$(__git_ps1_compact_upstream)\[\e[0m\]\$ '
+export PS1='\[\e[1;32m\]$(__user_host_for_repo)\[\e[0m\]:\[\e[1;34m\]$(__repo_path)\[\e[0m\]\[\e[1;35m\]::$(__git_ps1_compact_upstream)\[\e[0m\]\$ '
 # git end
 
 # Set up fzf key bindings and fuzzy completion
