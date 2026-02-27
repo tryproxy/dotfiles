@@ -157,13 +157,38 @@ __repo_path() {
 }
 
 __git_ps1_compact_upstream() {
-  local g
+  local g prefix up ahead behind
   g="$(__git_ps1 "%s")" || return
-  # Compact upstream marker: |u+1 -> +1, |u-2 -> -2, |u= -> (hidden)
-  g="${g//|u=/}"
-  g="${g//|u+/+}"
-  g="${g//|u-/-}"
-  printf "%s" "$g"
+  prefix="${g%%|u*}"
+
+  # no upstream marker present
+  if [ "$prefix" = "$g" ]; then
+    printf "%s" "$g"
+    return
+  fi
+
+  up="${g#*|u}"
+  case "$up" in
+    =)
+      # synced: omit upstream marker
+      printf "%s" "$prefix"
+      ;;
+    +*-*)
+      ahead="${up#+}"
+      ahead="${ahead%%-*}"
+      behind="${up#*-}"
+      printf "%s|!+%s-%s" "$prefix" "$ahead" "$behind"
+      ;;
+    +*)
+      printf "%s|+%s" "$prefix" "${up#+}"
+      ;;
+    -*)
+      printf "%s|-%s" "$prefix" "${up#-}"
+      ;;
+    *)
+      printf "%s" "$g"
+      ;;
+  esac
 }
 
 # separator variant ⎇
