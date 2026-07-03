@@ -7,10 +7,15 @@
   {
     "context": "VimControl && !menu",
     "bindings": {
-      // "g '": ["vim::PushJump", { "line": false }],
+      "g '": ["vim::PushJump", { "line": false }],
       // "`": ["vim::PushJump", { "line": true }]
-      "'": ["vim::PushJump", { "line": false }],
-      "`": ["vim::PushJump", { "line": true }],
+      // "'": [ "vim::PushJump", { "line": false } ],
+      "`": [
+        "vim::PushJump",
+        {
+          "line": true,
+        },
+      ],
     },
   },
   // {
@@ -241,7 +246,12 @@
   {
     "context": "EmptyPane || SharedScreen || vim_mode == normal",
     "bindings": {
-      "space r t": ["editor::SpawnNearestTask", { "reveal": "no_focus" }],
+      "space r t": [
+        "editor::SpawnNearestTask",
+        {
+          "reveal": "no_focus",
+        },
+      ],
     },
   },
   // Sneak motion, refer https://github.com/zed-industries/zed/pull/22793/files#diff-90c0cb07588e2f309c31f0bb17096728b8f4e0bad71f3152d4d81ca867321c68
@@ -250,6 +260,12 @@
     "bindings": {
       "s": ["vim::PushSneak", {}],
       "S": ["vim::PushSneakBackward", {}],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-;": "editor::ToggleRelativeLineNumbers",
     },
   },
 ]

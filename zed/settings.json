@@ -7,8 +7,116 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true,
+  },
+  "code_lens": "menu",
+  "cli_default_open_behavior": "existing_window",
+  "outline_panel": {
+    "dock": "left",
+  },
+  "proxy": "",
+  "format_on_save": "off",
+  "diff_view_style": "unified",
+  "audio": {},
+  "helix_mode": false,
+  "image_viewer": {
+    "unit": "binary",
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Cerebras": {
+        "api_url": "https://api.cerebras.ai/v1",
+        "available_models": [
+          {
+            "name": "llama3.1-8b",
+            "display_name": "Cerebras Llama 3.1 8B",
+            "max_tokens": 131072,
+          },
+          {
+            "name": "qwen-3-32b",
+            "display_name": "Cerebras Qwen 3 32B",
+            "max_tokens": 131072,
+          },
+          {
+            "name": "gpt-oss-120b",
+            "display_name": "Cerebras GPT-OSS 120B",
+            "max_tokens": 131072,
+          },
+        ],
+      },
+    },
+  },
+  "colorize_brackets": true,
+  "lsp_document_colors": "inlay",
+  "inlay_hints": {
+    "show_background": true,
+    "show_other_hints": true,
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+    "show_value_hints": false,
+    "enabled": false,
+  },
+  "completion_menu_scrollbar": "auto",
+  "show_whitespaces": "boundary",
+  "tab_size": 2,
+  "toolbar": {
+    "code_actions": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "gutter": {
+    "min_line_number_digits": 1,
+    "breakpoints": true,
+  },
+  "relative_line_numbers": "enabled",
+  "hover_popover_delay": 200,
+  "which_key": {
+    "enabled": true,
+  },
+  "prettier": {
+    "allowed": true,
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    "button": true,
+  },
+  "tabs": {
+    "close_position": "left",
+    "file_icons": true,
+    "git_status": false,
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_name": true,
+  },
+  "project_panel": {
+    "dock": "left",
+    "hide_root": true,
+    "bold_folder_labels": false,
+    "hide_gitignore": false,
+  },
+  "terminal": {
+    "dock": "bottom",
+    "scrollbar": {
+      "show": "always",
+    },
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+    "keep_selection_on_copy": true,
+    "copy_on_select": true,
+    "minimum_contrast": 45.0,
+    "blinking": "on",
+    "font_size": 15.0,
+    "font_family": "GohuFont uni14 Nerd Font",
+  },
   "buffer_font_family": "Hack Nerd Font Mono",
   "git_panel": {
+    "file_icons": true,
+    "show_count_badge": true,
+    "dock": "left",
     "tree_view": true,
   },
   "context_servers": {
@@ -20,14 +128,26 @@
     },
   },
   "agent_servers": {
-    "codex": {
-      "default_mode": "auto",
-      "favorite_models": [
-        "gpt-5.2-codex/medium",
-        "gpt-5.2/medium",
-        "gpt-5.3-codex/medium",
-      ],
-      "default_model": "gpt-5.3-codex/medium",
+    "cursor": {
+      "type": "registry",
+    },
+    "codex-acp": {
+      "favorite_config_option_values": {
+        "mode": ["read-only"],
+      },
+      "default_config_options": {
+        "fast-mode": "off",
+        "reasoning_effort": "high",
+        "mode": "read-only",
+        "model": "gpt-5.5",
+      },
+      "type": "registry",
+    },
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+    "qwen-code": {
+      "type": "registry",
     },
   },
   "diagnostics": {
@@ -46,7 +166,6 @@
     },
     // "cargo": null
   },
-
   "languages": {
     "Markdown": {
       "show_edit_predictions": true,
@@ -56,8 +175,10 @@
     },
     "HTML": {
       "show_edit_predictions": true,
+      "show_completions_on_input": true,
       "formatter": "language_server",
       "format_on_save": "off",
+      "language_servers": ["angular", "emmet-language-server", "..."],
     },
     "SCSS": {
       "show_edit_predictions": true,
@@ -79,7 +200,12 @@
     },
     "TypeScript": {
       "show_edit_predictions": true,
-      "language_servers": ["!vtsls", "typescript-language-server"],
+      "language_servers": [
+        "angular",
+        // "vtsls",
+        "!typescript-language-server",
+        "...",
+      ],
     },
     "Vue.js": {
       "format_on_save": "on",
@@ -92,48 +218,92 @@
   },
   "show_edit_predictions": true,
   "edit_predictions": {
+    "open_ai_compatible_api": {
+      "model": "",
+    },
+    "codestral": {
+      "model": "codestral-latest",
+    },
     "provider": "zed",
     "mode": "subtle",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
     },
-    "enabled_in_text_threads": false,
   },
   "agent": {
+    // "new_thread_location": "new_worktree",
+    "use_modifier_to_send": false,
+    "expand_edit_card": true,
+    "flexible": false,
+    "sidebar_side": "right",
+    "dock": "right",
+    "profiles": {
+      "main": {
+        "name": "main",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {},
+      },
+    },
+    "show_turn_stats": true,
+    "message_editor_min_lines": 4,
+    "play_sound_when_agent_done": "always",
     "default_profile": "ask",
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1",
+      "model": "claude-haiku-4.5",
     },
     "enabled": true,
-    "single_file_review": false,
+    "single_file_review": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini",
+      "effort": "medium",
+      "enable_thinking": true,
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
     },
   },
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme",
+  },
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 14.0,
   "buffer_line_height": {
-    "custom": 1.2999999523162842
+    "custom": 1.2999999523162842,
   },
   "theme": {
     "mode": "dark",
-    "light": "Ayu Light",
-    "dark": "Kanagawa Dragon - No Italics",
+    "light": "Zed Legacy: Rosé Pine Dawn",
+    "dark": "Tokyo Maple",
   },
   "vim": {
+    "cursor_shape": {
+      "visual": "hollow",
+      "normal": "block",
+    },
     "toggle_relative_line_numbers": true,
     "use_system_clipboard": "on_yank",
   },
-
   "lsp": {
+    // "eslint": {
+    //   "settings": {
+    //     "workingDirectory": {
+    //       "directory": ".",
+    //       "changeProcessCWD": true,
+    //     },
+    //   },
+    // },
     "vtsls": {
       "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
         // "vtsls": {
         //   "experimental": {
         //     "completion": {
@@ -161,11 +331,6 @@
         //   "updateImportsOnFileMove": { "enabled": "always" },// "lib": [],
         // },
         "javascript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always",
-          },
-        },
-        "typescript": {
           "updateImportsOnFileMove": {
             "enabled": "always",
           },
